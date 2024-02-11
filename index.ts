@@ -31,6 +31,7 @@ const PORT = process.env.PORT;
 app.use("/message", messageRouter);
 app.use("/auth", authRouter);
 
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

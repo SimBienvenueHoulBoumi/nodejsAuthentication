@@ -15,19 +15,34 @@ const options: swaggerJsdoc.Options = {
         name: "message",
         description: "Endpoints for managing messages",
       },
+      {
+        name: "authentication",
+        description: "Endpoints for user authentication",
+      },
     ],
     servers: [
       {
         url: "http://localhost:3000",
         description: "Development server",
       },
-      // {
-      //     url: "https://nodejs-authentication-1.herokuapp.com",
-      //     description: "Production server"
-      // }
+    ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [],
+      },
     ],
   },
-  apis: ["./src/controllers/*.ts"],
+  apis: ["./src/controllers/*.ts",],
+  
 };
 
 const specs = swaggerJsdoc(options);
